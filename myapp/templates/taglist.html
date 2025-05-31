@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}Tag: {{ tag }}{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-semibold mb-4">Photos tagged with "{{ tag }}"</h1>
+{% include 'list.html' with photos=photos %}
+{% endblock %}

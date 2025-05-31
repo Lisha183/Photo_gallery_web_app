@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Photo Hub{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <nav class="bg-white shadow p-4">
+        <div class="flex justify-between items-center max-w-5xl mx-auto">
+            <a href="/" class="text-right text-lg font-bold">Photo Hub</a>
+            <div>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'photo:list'%}" class="mr-4">Home</a>
+                    <a href="{% url 'photo:profile' %}" class="mr-4">Profile</a>
+                    <a href="{% url 'photo:signup' %}" class="text-red-500">Logout</a>
+
+                {% else %}
+                    <a href="{% url 'photo:login' %}" class="mr-4">Login</a>
+                    <a href="{% url 'photo:signup' %}" class="text-blue-500">Sign Up</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-5xl mx-auto mt-6">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

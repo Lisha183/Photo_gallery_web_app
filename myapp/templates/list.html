@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}All Photos{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-semibold mb-4">All Photos</h1>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    {% for photo in photos %}
+    <div class="bg-white shadow p-2">
+        <a href="{% url 'photo:detail' photo.pk %}">
+            <img src="{{ photo.image.url }}" alt="{{ photo.title }}" class="w-full h-48 object-cover">
+            <h2 class="text-lg font-bold mt-2">{{ photo.title }}</h2>
+        </a>
+    </div>
+
+   
+    {% endfor %}
+</div>
+<div class="flex justify-center mt-6">
+    <a href="{% url 'photo:create' %}" 
+       class="inline-flex items-center justify-center w-12 h-12 text-white bg-blue-600 rounded-full hover:bg-blue-700 shadow-lg"
+       title="Upload New Photo"
+       aria-label="Upload New Photo">
+
+       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" 
+            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+       </svg>
+    </a>
+</div>
+{% endblock %}

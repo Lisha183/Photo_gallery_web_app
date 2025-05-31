@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Upload Photo{% endblock %}
+{% block content %}
+<h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Upload a New Photo</h1>
+<form method="post" enctype="multipart/form-data" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
+    {% csrf_token %}
+    <div class="mb-4">
+        {{ form.title.label_tag }}
+        {{ form.title }}
+    </div>
+    <div class="mb-4">
+        {{ form.description.label_tag }}
+        {{ form.description }}
+    </div>
+    <div class="mb-4">
+        {{ form.tags.label_tag }}
+        {{ form.tags }}
+    </div>
+    <div class="mb-6">
+        {{ form.image.label_tag }}
+        {{ form.image }}
+    </div>
+    <button type="submit" 
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md shadow-md transition duration-300">
+        Submit
+    </button>
+</form>
+{% endblock %}
+
