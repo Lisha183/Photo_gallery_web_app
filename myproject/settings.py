@@ -148,7 +148,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
 
 DEBUG = os.environ.get('RENDER', None) is None
-ALLOWED_HOSTS = ['your-service-name.onrender.com']
+ALLOWED_HOSTS = ['photo-gallery-web-app.onrender.com']
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
