@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-g&+z@(r3$fdezi_1ia%5xq#7aw-+si7-*ei2(y%e%o(+g*^@b*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['photo-gallery-web-app.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -96,15 +96,20 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default':{
+#         'ENGINE':'django.db.backends.postgresql',
+#         'NAME': 'gallery',
+#         'USER': 'alicia',
+#         'PASSWORD': '123456',
+#         'HOST': 'localhost', 
+#         'PORT': '5432',
+#     }
+# }
+
+
 DATABASES = {
-    'default':{
-        'ENGINE':'django.db.backends.postgresql',
-        'NAME': 'gallery',
-        'USER': 'alicia',
-        'PASSWORD': '123456',
-        'HOST': 'localhost', 
-        'PORT': '5432',
-    }
+    'default': dj_database_url.parse("postgresql://photo_hub_l1kt_user:i43WP24xEaG9jfQ1tKrp9TdwIXSEjW7r@dpg-d0tkrl6mcj7s73dllpp0-a.oregon-postgres.render.com/photo_hub_l1kt ")
 }
 
 
@@ -148,7 +153,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
 
 DEBUG = os.environ.get('RENDER', None) is None
-ALLOWED_HOSTS = ['photo-gallery-web-app.onrender.com']
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
